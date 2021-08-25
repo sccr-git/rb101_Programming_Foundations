@@ -1,15 +1,23 @@
+# at the top of file
+
+require 'yaml'
+MESSAGES = YAML.load_file('calculator_messages.yml')
+
+
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
 def valid_number?(number)
-  number != 0
+  number.to_i.to_s == number
 end
 
-prompt("Welcome to Calculator! Please enter your name:")
-name = Kernel.gets().chomp()
+prompt(MESSAGES['welcome'])
+
+name = ''
 
 loop do
+  name = Kernel.gets().chomp()
   if name.empty?()
     prompt("Make sure to use a valid name.")
   else
@@ -99,3 +107,4 @@ loop do
 end
 
 prompt("Thanks for using the calculator")
+
