@@ -91,7 +91,7 @@ p 3000 % 1440
 p 3000.divmod(1440)
 p 120.divmod(60)
 
-=end
+
 
 MINUTES_PER_HOUR = 60
 HOURS_PER_DAY = 24
@@ -128,3 +128,64 @@ p time_of_day(-1437) #== "00:03"
 p time_of_day(3000) #== "02:00"
 p time_of_day(800) #== "13:20"
 p time_of_day(-4231) #== "01:29"
+
+=end
+
+=begin
+  
+PEDAC
+
+(P)
+Problem
+
+Given a string of words separated by spaces, write a method that takes this string of words and returns a string in which the first and last letters of every word are swapped.
+
+You may assume that every word contains at least one letter, and that the string will always contain at least one word. You may also assume that each string contains nothing but words and spaces
+
+Input: String
+Output: String
+
+Rules:
+Explicit
+- 
+
+(E)
+Example Problem
+
+swap('Oh what a wonderful day it is') == 'hO thaw a londerfuw yad ti si'
+swap('Abcde') == 'ebcdA'
+swap('a') == 'a'
+
+(D)
+Data Structure
+
+-string separated into individual words in an array
+
+(A)
+Algorithm
+
+- create a method named swap
+- split the string into words stored in an array
+- loop through each word and remove the first and last letters
+- store the letters in variables and then put the letters back in their new positions
+
+(C)
+Code
+
+=end
+
+def swap(string)
+  reversed_array = string.split(' ').map do |word|
+    first_letter = word[0]
+      last_letter = word[-1]
+      word_remainder = word[1..-2]
+      last_letter + word_remainder + first_letter
+  end
+  reversed_array.join(' ')
+end
+
+p swap('Oh what a wonderful day it is') #== 'hO thaw a londerfuw yad ti si'
+p swap('Abcde') #== 'ebcdA'
+p swap('a') #== 'a'
+
+
